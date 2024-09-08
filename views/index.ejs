@@ -1,0 +1,35 @@
+<!-- include header -->
+<%- include('layout/header') %>
+<!-- /include header -->
+    <a href="/create" class="btn btn-secondary">Add New Category</a>
+    <table class="table table-dark table-striped container">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">name</th>
+          <th scope="col">slug</th>
+          <th scope="col">image</th>
+          <th scope="col">action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% categories.forEach((task, index) => { %>
+        <tr>
+          <th scope="row"><%= index+1 %></th>
+          <td><%= task.name %></td>
+          <td><%= task.slug %></td>
+          <td><img src="/category/<%= task.image %>" alt="Image <%= index + 1 %>" style="max-width: 300px;"></td>
+          <td><a href="/edit/<%= task._id %>">Edit</a>
+            <form action="/delete/<%= task._id %>" method="POST">
+              <button type="submit">Delete</button>
+            </form>
+          </td>
+          
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+<!-- include footer -->
+<%- include('layout/footer') %>
+<!-- /include footer -->
+
